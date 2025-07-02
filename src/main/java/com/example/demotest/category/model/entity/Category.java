@@ -16,4 +16,37 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     List<Products>  products;
+
+    public Category() {
+    }
+
+    public Category(Long id, String categoryName, List<Products> products) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.products = products;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Products> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Products> products) {
+        this.products = products;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 }
