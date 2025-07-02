@@ -1,5 +1,6 @@
 package com.example.demotest.orderdetail.model.entity;
 
+import com.example.demotest.order.model.entity.OrderProduct;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,4 +15,7 @@ public class OrderDetail {
 
     private double subtotal;
 
+    @ManyToOne(fetch =  FetchType.EAGER)
+    @JoinColumn(name = "id_order")
+    private OrderProduct orderpro;
 }

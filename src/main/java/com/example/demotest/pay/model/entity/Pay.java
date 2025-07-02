@@ -1,5 +1,6 @@
 package com.example.demotest.pay.model.entity;
 
+import com.example.demotest.order.model.entity.OrderProduct;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -28,4 +29,8 @@ public class Pay {
     @Column(name="date_pay")
     @Temporal(TemporalType.DATE)
     private Date payDate;
+
+    @OneToOne(mappedBy = "pay")
+    private OrderProduct orderProduct;
+
 }

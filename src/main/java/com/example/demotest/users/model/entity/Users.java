@@ -1,7 +1,7 @@
 package com.example.demotest.users.model.entity;
 
 
-import com.example.demotest.order.model.entity.Order;
+import com.example.demotest.order.model.entity.OrderProduct;
 import com.example.demotest.shoppingCart.model.entity.ShoppingCart;
 import jakarta.persistence.*;
 
@@ -25,7 +25,7 @@ public class Users {
     };
 
     @OneToMany(mappedBy = "user")
-    List<Order> orders;
+    List<OrderProduct> orderProducts;
     @OneToMany(mappedBy = "user")
     List<ShoppingCart> shoppingCarts;
 

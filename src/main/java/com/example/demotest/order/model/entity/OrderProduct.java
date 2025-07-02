@@ -1,5 +1,7 @@
 package com.example.demotest.order.model.entity;
 
+import com.example.demotest.orderdetail.model.entity.OrderDetail;
+import com.example.demotest.pay.model.entity.Pay;
 import com.example.demotest.products.model.entity.Products;
 import com.example.demotest.users.model.entity.Users;
 import jakarta.persistence.*;
@@ -7,10 +9,11 @@ import jakarta.persistence.*;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="order")
-public class Order {
+@Table(name="order_product")
+public class OrderProduct {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -39,5 +42,10 @@ public class Order {
     @JoinColumn(name="id_products")
     private Products products;
 
+    @OneToMany(mappedBy = "orderpro")
+    List<OrderDetail> orderDetails;
 
+    @OneToOne
+    @JoinColumn(name = "id_pay")
+    private Pay pay;
 }

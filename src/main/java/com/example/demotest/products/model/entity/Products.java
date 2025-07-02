@@ -2,7 +2,7 @@ package com.example.demotest.products.model.entity;
 
 
 import com.example.demotest.category.model.entity.Category;
-import com.example.demotest.order.model.entity.Order;
+import com.example.demotest.order.model.entity.OrderProduct;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -29,6 +29,6 @@ public class Products {
     private Category category;
 
     @OneToMany(mappedBy = "products")
-    List<Order> orders;
+    List<OrderProduct> orderProducts;
 
 }
