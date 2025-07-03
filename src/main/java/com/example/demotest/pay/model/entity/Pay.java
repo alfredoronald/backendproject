@@ -33,4 +33,36 @@ public class Pay {
     @OneToOne(mappedBy = "pay")
     private OrderProduct orderProduct;
 
+    public Pay() {
+    }
+
+    public Pay(Date payDate, OrderProduct orderProduct, Long id) {
+        this.payDate = payDate;
+        this.orderProduct = orderProduct;
+        this.id = id;
+    }
+
+    public Date getPayDate() {
+        return payDate;
+    }
+
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
 }
