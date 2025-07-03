@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("p")
+@RequestMapping("/api/category")
 public class Controller {
 
     final ICategoryService categoryService;
