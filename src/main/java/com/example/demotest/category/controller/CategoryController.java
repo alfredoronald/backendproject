@@ -7,17 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/api/category")
-public class Controller {
+public class CategoryController {
 
     final ICategoryService categoryService;
 
-    public Controller(ICategoryService categoryService) {
+
+    public CategoryController(ICategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -26,12 +26,16 @@ public class Controller {
        return ResponseEntity.status(HttpStatus.OK).body(categoryService.findAll());
 
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.findCategoryById(id));
+    }
 
     @PostMapping
     public ResponseEntity<?> createOtUpdate(@RequestBody Category category) {
         Optional<Category> categoryOptional = categoryService.createOrUpdateCategory(category);
-        if(categoryOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se creo el empleado");
+        if(categoryOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Se agrego una nueva categoria");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryOptional.get());
     }

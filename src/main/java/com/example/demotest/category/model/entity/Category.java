@@ -1,6 +1,7 @@
 package com.example.demotest.category.model.entity;
 
 import com.example.demotest.products.model.entity.Products;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class Category {
     private String categoryName;
 
     @OneToMany(mappedBy = "category")
-    List<Products>  products;
+    private List<Products>  products;
 
     public Category() {
     }

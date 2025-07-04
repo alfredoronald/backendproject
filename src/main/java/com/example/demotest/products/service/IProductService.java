@@ -15,8 +15,7 @@ public interface IProductService {
      * */
 
     List<Products> findAll();
-
-    Optional<Products> findCategoryById(final Long id);
+    Optional<Products> findProductById(final Long id);
     Optional<Products> createOrUpdateProduct(final Products products);
-
+    Boolean deleteProductById(final Long id);
 }

@@ -3,6 +3,8 @@ package com.example.demotest.products.model.entity;
 
 import com.example.demotest.category.model.entity.Category;
 import com.example.demotest.order.model.entity.OrderProduct;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -25,6 +27,7 @@ public class Products {
     private int stock;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinColumn(name="id_category")
     private Category category;
 

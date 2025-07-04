@@ -15,7 +15,6 @@ public interface ICategoryService {
      * */
 
     List<Category> findAll();
-
     Optional<Category> findCategoryById(final Long id);
     Optional<Category> createOrUpdateCategory(final Category category);
 }

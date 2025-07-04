@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/category/products")
 public class ProductController {
 
     final IProductService iProductService;
@@ -18,6 +19,7 @@ public class ProductController {
     public ProductController(IProductService iProductService) {
         this.iProductService = iProductService;
     }
+
 
     @GetMapping
     public ResponseEntity<?> findAll() {
@@ -29,9 +31,15 @@ public class ProductController {
     public ResponseEntity<?> createOtUpdate(@RequestBody Products products) {
         Optional<Products> productsOptional = iProductService.createOrUpdateProduct(products);
         if(productsOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se creo el empleado");
+            return ResponseEntity.status(HttpStatus.OK).body("Se añadio correctamente");
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(productsOptional.get());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) {
+        return  ResponseEntity
+                    .status(HttpStatus.OK)
+                .body(iProductService.deleteProductById(id));
+    }
 }
